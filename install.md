@@ -38,6 +38,10 @@ python lstchain/scripts/lstchain_mc_r0_to_dl1.py --help
 #                        standard configuration is applied
 #  --logger-level LOG_LEVEL, -l LOG_LEVEL
 
+#Additional packages
+pip install snakeviz
+
+
 
 #NOT good
 git clone https://github.com/gabemery/cta-lstchain.git
@@ -45,6 +49,8 @@ cd cta-lstchain
 conda env create -f environment.yml
 conda activate lst-dev
 pip install -e .
+
+
 
 #NOT good
 git clone https://github.com/burmist-git/cta-lstchain.git
