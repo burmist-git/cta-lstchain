@@ -1,3 +1,6 @@
+General info:
+
+
 git clone https://github.com/burmist-git/cta-lstchain.git
 git branch -a
 git checkout remotes/origin/lhfit_withasymetry_rebasemaster17052021
