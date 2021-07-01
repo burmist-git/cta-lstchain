@@ -26,9 +26,9 @@ function lstchain_mc_r0_to_dl1_short_sh {
 
 function lstchain_mc_r0_to_dl1_sh {
     echo "lstchain_mc_r0_to_dl1_sh"
-    #rm -rf $cProfile_log
-    #rm -rf $output_dir
-    #python -m cProfile -s time -o $cProfile_log lstchain_mc_r0_to_dl1.py --input-file $input_file --output-dir $output_dir --logger-level DEBUG
+    rm -rf $cProfile_log
+    rm -rf $output_dir
+    python -m cProfile -s time -o $cProfile_log lstchain_mc_r0_to_dl1.py --input-file $input_file --output-dir $output_dir --config=$config_file --logger-level DEBUG
 }
 
 function visualise_profiling {
