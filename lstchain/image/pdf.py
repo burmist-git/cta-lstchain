@@ -1,5 +1,8 @@
 import numpy as np
 
+import numba
+from numba.pycc import CC
+from lstchain.image.log_gaussian_CC import log_gaussian_CC as log_gaussian_CC
 
 def log_gaussian(x, mean, sigma):
     """
@@ -19,6 +22,12 @@ def log_gaussian(x, mean, sigma):
     log_pdf: float or array-like
         Log of the evaluation of the normal law at x
     """
+
+    #Check whether all the input parameters have an expected format
+    #Call the optimized function from c shared library.
+    if type(x) is np.ndarray and type(mean) is np.ndarray and type(sigma) is np.ndarray :
+        if ( np.ndim(x) == 3 and np.ndim(mean) == 3 and np.ndim(sigma) == 3) :
+            return log_gaussian_CC(np.float32(x),np.float64(mean),np.float64(sigma))
 
     log_pdf = -(x - mean) ** 2 / (2 * sigma ** 2)
     log_pdf = log_pdf - np.log((np.sqrt(2 * np.pi) * sigma))
