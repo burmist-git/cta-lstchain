@@ -30,21 +30,6 @@ def log_gaussian(x, mean, sigma):
         if ( np.ndim(x) == 3 and np.ndim(mean) == 3 and np.ndim(sigma) == 3) :
             return log_gaussian_CC(np.float32(x),np.float64(mean),np.float64(sigma))
         elif ( np.ndim(x) == 2 and np.ndim(mean) == 2 and np.ndim(sigma) == 2) :
-            print('x')
-            print(x)
-            print('mean')
-            print(mean)
-            print('sigma')
-            print(sigma)
-            print(np.ndim(x))
-            print(np.ndim(mean))
-            print(np.ndim(sigma))
-            print(type(x))
-            print(type(mean))
-            print(type(sigma))
-            print(type(x[0][0]))
-            print(type(mean[0][0]))
-            print(type(sigma[0][0]))
             return log_gaussian2_CC(np.float32(x),np.float64(mean),np.float64(sigma))
 
     log_pdf = -(x - mean) ** 2 / (2 * sigma ** 2)
