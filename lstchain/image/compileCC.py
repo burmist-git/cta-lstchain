@@ -38,4 +38,11 @@ def compileCC():
                 for k in range(mean.shape[2]):
                     log_pdf[i,j,k] = -(x[i,j,0] - mean[i,j,k])*(x[i,j,0] - mean[i,j,k])/2.0/sigma[i,j,k]/sigma[i,j,k] - np.log(np.sqrt(2*3.141592653589793)*sigma[i,j,k]);
         return log_pdf
+    @cc.export('log_gaussian2_CC', 'f8[:,:](f4[:,:],f8[:,:],f8[:,:])')
+    def log_gaussian2_CC(x,mean,sigma):
+        log_pdf = np.empty(mean.shape)
+        for i in range(mean.shape[0]):
+            for j in range(mean.shape[1]):
+                log_pdf[i,j] = -(x[i,j] - mean[i,j])*(x[i,j] - mean[i,j])/2.0/sigma[i,j]/sigma[i,j] - np.log(np.sqrt(2*3.141592653589793)*sigma[i,j]);
+        return log_pdf
     cc.compile()
