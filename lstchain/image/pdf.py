@@ -3,6 +3,7 @@ import numpy as np
 import numba
 from numba.pycc import CC
 from lstchain.image.log_gaussian_CC import log_gaussian_CC as log_gaussian_CC
+from lstchain.image.log_gaussian_CC import log_gaussian2_CC as log_gaussian2_CC
 
 def log_gaussian(x, mean, sigma):
     """
@@ -28,6 +29,23 @@ def log_gaussian(x, mean, sigma):
     if type(x) is np.ndarray and type(mean) is np.ndarray and type(sigma) is np.ndarray :
         if ( np.ndim(x) == 3 and np.ndim(mean) == 3 and np.ndim(sigma) == 3) :
             return log_gaussian_CC(np.float32(x),np.float64(mean),np.float64(sigma))
+        elif ( np.ndim(x) == 2 and np.ndim(mean) == 2 and np.ndim(sigma) == 2) :
+            print('x')
+            print(x)
+            print('mean')
+            print(mean)
+            print('sigma')
+            print(sigma)
+            print(np.ndim(x))
+            print(np.ndim(mean))
+            print(np.ndim(sigma))
+            print(type(x))
+            print(type(mean))
+            print(type(sigma))
+            print(type(x[0][0]))
+            print(type(mean[0][0]))
+            print(type(sigma[0][0]))
+            return log_gaussian2_CC(np.float32(x),np.float64(mean),np.float64(sigma))
 
     log_pdf = -(x - mean) ** 2 / (2 * sigma ** 2)
     log_pdf = log_pdf - np.log((np.sqrt(2 * np.pi) * sigma))
